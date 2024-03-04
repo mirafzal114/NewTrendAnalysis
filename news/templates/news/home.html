@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% block title %}
+    HOME
+{% endblock title %}
+
+{% block body  %}
+    <div class="box-forlastnews">
+        <div class="line">
+            <h3>HOT <span>NEWS</span> (last news for week)</h3>
+        </div>
+    </div>
+    <!-- end -->
+    <!-- card for news -->
+
+    <div class="card-box">
+    {% for i in news %}
+        <div class="card">
+            <div class="title">
+                <h3><a style="color:black; text-decoration: none" href="{{ i.get_absolute_url }}">{{ i.title|truncatechars:80|linebreaks }}</a></h3>
+            </div>
+            <div class="content">
+                <p>{{ i.body|truncatechars:150 }}</p>
+            </div>
+            <div class="footer-card">
+                <div class="comment">
+                    <a href=""><i class="far fa-comments"></i></a>
+                </div>
+                <div class="author">
+                    <p>{{ i.author }}</p>
+                </div>
+                <div class="time">
+                   {{ i.created_at }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock body %}

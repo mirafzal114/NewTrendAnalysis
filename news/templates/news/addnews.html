@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    ADDNEWS
+{% endblock %}
+{% block body %}
+{#  <div class="form-addnews">#}
+{#      <form class="news-form" method="POST" action="{% url 'news_add' %}">#}
+{#          {% csrf_token %}#}
+{#          <h3>ADD NEWS</h3>#}
+{#          <input placeholder="title news" type="text" name="title" maxlength="250" required="" id="id_title">#}
+{#          <textarea name="body" cols="40" rows="10" required="" id="id_body"></textarea>#}
+{#          <select name="status" id="id_status">#}
+{#              <option value="DF" selected="">Draft</option>#}
+{#              <option value="PB">Published</option>#}
+{#          </select>#}
+{#          <br> <button type="submit">ADD</button>#}
+{#      </form>#}
+{#  </div>#}
+    <div class="form-addnews">
+    <form class="news-form" method="POST" action="{% url 'news_add' %}">
+        {% csrf_token %}
+        <h3>ADD NEWS</h3>
+        {{ form.title }}
+        {{ form.body }}
+        {{ form.status }}
+        <br>
+        <button type="submit">ADD</button>
+    </form>
+</div>
+
+{% endblock %}

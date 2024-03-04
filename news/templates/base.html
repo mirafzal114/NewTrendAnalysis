@@ -1,0 +1,63 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <script src="https://kit.fontawesome.com/3b0251c032.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{%  block title %} {% endblock title %}</title>
+</head>
+    <body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <h1><a style="color:black; text-decoration: none" href="/">NEWS<span>24</span></a></h1>
+                </div>
+                <div class="search-bar"></div>
+                <div class="nav-items">
+                    <ul class="menu">
+                        <li>
+                            <input placeholder="search.." class="input-bt" type="text">
+                        </li>
+                        <li>
+                            <a href="" class="nav-item">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="nav-item">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="nav-item">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+{#    main page   #}
+   <div class="main-menu">
+        <ul class="topics">
+            <li class="topic"><a href="">All</a></li>
+            <li class="topic"><a href="">Sports</a></li>
+            <li class="topic"><a href="">Economic</a></li>
+            <li class="topic"><a href="">Technology</a></li>
+            <li class="topic"><a href="">BBS</a></li>
+            <li class="topic"><a href="">Hot</a></li>
+            <li class="topic"><a href="">Ecology</a></li>
+        </ul>
+    </div>
+        {% block body %}
+
+        {% endblock %}
+    </body>
+</html>
