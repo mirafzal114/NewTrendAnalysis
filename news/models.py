@@ -38,11 +38,9 @@ class News(models.Model):
 
 
 class Comment(models.Model):
+    content = models.TextField()
     post = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')
-    body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    active = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['created_at']

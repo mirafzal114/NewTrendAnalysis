@@ -16,20 +16,17 @@
     {% for i in news %}
         <div class="card">
             <div class="title">
-                <h3><a style="color:black; text-decoration: none" href="{{ i.get_absolute_url }}">{{ i.title|truncatechars:80|linebreaks }}</a></h3>
+                <h3><a style="color:black; text-decoration: none" href="{% url 'news_detail' id=i.id %}">{{ i.title|truncatechars:80|linebreaks }}</a></h3>
             </div>
             <div class="content">
                 <p>{{ i.body|truncatechars:150 }}</p>
             </div>
             <div class="footer-card">
-                <div class="comment">
-                    <a href=""><i class="far fa-comments"></i></a>
-                </div>
-                <div class="author">
-                    <p>{{ i.author }}</p>
-                </div>
+{#                <div style="margin-top: 10px;" class="comment">#}
+{#                    <a style="margin-top: 30px; " href="{% url 'post_comment' post_id=i.id %}"><i class="far fa-comments"></i></a>#}
+{#                </div>#}
                 <div class="time">
-                   {{ i.created_at }}
+                  <p style="margin-bottom: 20px;"> {{ i.created_at }}</p>
                 </div>
             </div>
         </div>

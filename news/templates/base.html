@@ -26,7 +26,7 @@
                         </li>
                         <li>
                             <a href="" class="nav-item">
-                                <i class="fas fa-search"></i>
+                                <i class="fa-duotone fa-magnifying-glass"></i>
                             </a>
                         </li>
                         <li>
@@ -34,11 +34,24 @@
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li>
-                            <a href="" class="nav-item">
-                                <i class="fas fa-user"></i>
+                            <a href="{% url 'news_add' %}" class="nav-item">
+                                <i class="fa-solid fa-plus"></i>
                             </a>
                         </li>
+                        <li>
+                            <a href="{% url 'logout' %}" class="nav-item">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{% url 'sign-up' %}" class="nav-item">
+                                <i class="fa-duotone fa-right-to-bracket"></i>
+                            </a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

@@ -4,9 +4,8 @@ from news.models import News,Comment
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('post','body')
+    list_display = ('post','content')
     search_fields = ('post',)
-    list_filter = ('active', 'created_at')
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
 
