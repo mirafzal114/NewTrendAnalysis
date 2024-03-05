@@ -8,5 +8,6 @@ urlpatterns = [
     path('<int:post_id>/share/', views.post_share, name='news_share'),
     path('<int:post_id>/comment/',  views.post_comment, name='post_comment'),
     path('add/', views.create_news, name='news_add'),
-    path('delete/<int:pk>/', views.delete_news, name='delete_news')
+    path('delete/<int:pk>/', views.delete_news, name='delete_news'),
+    path('search/', views.search_product, name='search_form')
 ]

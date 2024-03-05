@@ -10,7 +10,7 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('news_list')
+            return redirect('login')
     else:
         form = SignUpForm()
 

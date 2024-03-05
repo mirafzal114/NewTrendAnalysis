@@ -39,7 +39,9 @@ span{
     list-style: none;
 
 }
-.menu>li>a{
+
+
+.menu>li>a,.search-display{
     text-decoration: none;
     font-size: 20px;
     margin-left: 20px;
@@ -55,12 +57,33 @@ span{
     border-top:3px solid red;
 }
 
+
 .input-bt{
     font-size: 18px;
     padding:7px;
-    display: none;
+    margin-bottom: 6px;
+    border:none;
+    background-color: rgba(255, 255, 255, 0.4);
+
 }
 
+.search-display:hover{
+    font-size: 22px;
+    text-shadow: 1px 2px 3px red;
+    mso-border-shadow: yes;
+    border-bottom: 3px solid red;
+    border-top:3px solid red;
+
+}
+
+
+.search-k{
+    height: 87%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border:none;
+
+}
 .main-menu{
     width: 90%;
     height: 70px;

@@ -21,19 +21,12 @@
                 <div class="search-bar"></div>
                 <div class="nav-items">
                     <ul class="menu">
-                        <li>
-                            <input placeholder="search.." class="input-bt" type="text">
+                        <form method="GET" action="{% url 'search_form' %}">
+                        <li class="search-navigator" style="display: flex">
+                            <input name="q" placeholder="search.." value="{{ query }}" class="input-bt" type="text">
+                            <button style="height: 35px" class="search-k" type="submit"> <i class="fa-duotone fa-magnifying-glass"></i></button>
                         </li>
-                        <li>
-                            <a href="" class="nav-item">
-                                <i class="fa-duotone fa-magnifying-glass"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="nav-item">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </li>
+                        </form>
                         {% if user.is_authenticated %}
                         <li>
                             <a href="{% url 'news_add' %}" class="nav-item">
@@ -42,13 +35,13 @@
                         </li>
                         <li>
                             <a href="{% url 'logout' %}" class="nav-item">
-                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
                             </a>
                         </li>
                         {% else %}
                         <li>
                             <a href="{% url 'sign-up' %}" class="nav-item">
-                                <i class="fa-duotone fa-right-to-bracket"></i>
+                                <i class="fa-duotone fa-right-to-bracket"></i> SIGNUP
                             </a>
                         </li>
                         {% endif %}
@@ -69,8 +62,32 @@
             <li class="topic"><a href="">Ecology</a></li>
         </ul>
     </div>
-        {% block body %}
 
-        {% endblock %}
+    {% block body %}
+        {% if results %}
+ <div class="card-box">
+    {% for i in results %}
+        <div class="card">
+            <div class="title">
+                <h3><a style="color:black; text-decoration: none" href="{% url 'news_detail' id=i.id %}">{{ i.title|truncatechars:80|linebreaks }}</a></h3>
+            </div>
+            <div class="content">
+                <p>{{ i.body|truncatechars:150 }}</p>
+            </div>
+            <div class="footer-card">
+{#                <div style="margin-top: 10px;" class="comment">#}
+{#                    <a style="margin-top: 30px; " href="{% url 'post_comment' post_id=i.id %}"><i class="far fa-comments"></i></a>#}
+{#                </div>#}
+                <div class="time">
+                  <p style="margin-bottom: 20px;"> {{ i.created_at }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+        {% else %}
+            <h3 style="text-align: center; font-family: Arial">There aren't any news about your request</h3>
+        {% endif %}
+    {% endblock %}
     </body>
 </html>

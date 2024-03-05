@@ -6,7 +6,7 @@
 {% block body  %}
     <div class="box-forlastnews">
         <div class="line">
-            <h3>HOT <span>NEWS</span> (last news for week)</h3>
+            <h3>HOT <span>NEWS</span> (last news for a week)</h3>
         </div>
     </div>
     <!-- end -->
@@ -32,6 +32,10 @@
         </div>
     {% endfor %}
     </div>
+    {% for i in recent_news %}
+        {{ i.title }}
+        {{ i.content }}
+    {% endfor %}
 
 
 {% endblock body %}

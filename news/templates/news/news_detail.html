@@ -19,15 +19,26 @@
     <div class="comments">
         {% if user.is_authenticated %}
             <div class="add-comment">
-                <form class="form-comment" action="{% url '' %}" method="POST">
-                    {% csrf_token %}
-                    <textarea style="width: 100%" placeholder="add-comment...." name="body" cols="40" rows="10" required="" aria-invalid="true" id="id_body"></textarea>
-                    <button class="bt-comment" type="submit">ADD</button>
-                </form>
+            <form class="form-comment" action="{% url 'post_comment' post_id=news_detail.id %}" method="POST">
+                {% csrf_token %}
+                <textarea placeholder="write your comment.." name="content" cols="40" rows="10" required="" id="id_content"></textarea>
+                <button class="bt-comment" type="submit">ADD</button>
+            </form>
+        {% if form_comment.errors %}
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Please correct the following errors.
+                <ul>
+                    {% for error in form_comment.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+{% endif %}
+
             </div>
             <div class="line-cm"></div>
         {% else %}
-            <h3>Before you write a comment, you need to register</h3>
+            <h3><a style="text-decoration: none" href="{% url 'sign-up' %}">Before write a comment, you need to register</a></h3>
         {% endif %}
 
         {% for comment in news_detail.comments.all %}
@@ -35,7 +46,7 @@
                 <div class="profile">
                     <div class="avatar"></div>
                     <div class="name">
-                        <h5>{{ comment.author }}</h5>
+                        <h5>{{ comment.author.username }}</h5>
                     </div>
                 </div>
                 <div class="body">

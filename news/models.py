@@ -38,6 +38,8 @@ class News(models.Model):
 
 
 class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=250, blank=True)
     content = models.TextField()
     post = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')
     created_at = models.DateTimeField(auto_now_add=True)
