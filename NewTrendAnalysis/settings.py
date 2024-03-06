@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig', # application
     'news.apps.NewsConfig', #application
+    'taggit' # installed
 ]
 
 MIDDLEWARE = [

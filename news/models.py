@@ -17,6 +17,7 @@ class News(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     body = models.TextField()
+    view =models.PositiveIntegerField(default=0)
     publish = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -36,8 +37,12 @@ class News(models.Model):
     def get_absolute_url(self):
         return reverse('news_detail', args=[self.id])
 
-
+    def increase_view(self):
+        self.view += 1
+        self.save()
+from taggit.managers import TaggableManager
 class Comment(models.Model):
+
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=250, blank=True)
     content = models.TextField()

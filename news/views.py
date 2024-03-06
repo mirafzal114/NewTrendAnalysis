@@ -21,7 +21,19 @@ def news_list(request):
     posts = paginator.get_page(page_number)
     return render(request, 'news/home.html', {'news':news})
 
+# def news_view(request, news_id):
+#     news = News.objects.get(id=news_id)
+#     news.increment_views()
+#     return render(request, 'news/home.html', {'news':news})
 def news_detail(request, id):
+    news = get_object_or_404(News, id=id, status=News.Status.PUBLISHED)
+    viewed_news = set(request.session.get('viewed_news', []))
+    if id not in viewed_news:
+        # Если новость еще не просматривалась, увеличиваем счетчик просмотров и добавляем ID в множество
+        news.increase_view()  # Это метод, который вы должны добавить в вашу модель News
+        viewed_news.add(id)
+        request.session['viewed_news'] = list(viewed_news)
+
     news = get_object_or_404(News, id=id, status=News.Status.PUBLISHED)
     return render(request, 'news/news_detail.html', {'news_detail': news})
 
