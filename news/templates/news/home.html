@@ -6,14 +6,14 @@
 {% block body  %}
     <div class="box-forlastnews">
         <div class="line">
-            <h3>HOT <span>NEWS</span> (last news for a week)</h3>
+            <h3>HOT <span>NEWS</span> (trend for last 10 days)</h3>
         </div>
     </div>
     <!-- end -->
     <!-- card for news -->
 
     <div class="card-box">
-    {% for i in news %}
+    {% for i in trend_10 %}
         <div class="card">
             <div class="title">
                 <h3><a style="color:black; text-decoration: none" href="{% url 'news_detail' id=i.id %}">{{ i.title|truncatechars:80|linebreaks }}</a></h3>
@@ -34,5 +34,32 @@
     {% endfor %}
     </div>
 
+    <div class="box-forlastnews">
+        <div class="line">
+            <h3>HOT <span>NEWS</span> (trend for a month)</h3>
+        </div>
+    </div>
+
+        <div class="card-box">
+    {% for i in trend_month %}
+        <div class="card">
+            <div class="title">
+                <h3><a style="color:black; text-decoration: none" href="{% url 'news_detail' id=i.id %}">{{ i.title|truncatechars:80|linebreaks }}</a></h3>
+            </div>
+            <div class="content">
+                <p>{{ i.body|truncatechars:150 }}</p>
+            </div>
+            <div class="footer-card">
+                <div class="view">
+                   <p><i class="fa-duotone fa-eye"></i> {{ i.view }}</p>
+                </div>
+
+                <div class="time">
+                  <p style="margin-bottom: 20px;"><i class="fa-sharp fa-regular fa-calendar-days"></i> {{ i.created_at|date:"F j, H:i" }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 
 {% endblock body %}
