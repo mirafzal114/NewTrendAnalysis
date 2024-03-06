@@ -1,0 +1,412 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    height: 80px;
+    width: 90%;
+    background-color: #b9b9b9;
+    margin:30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+}
+span{
+    color:red;
+}
+.logo{
+    width: 25%;
+}
+
+.logo>h1{
+    font-size: 50px;
+    font-family: "Protest Guerrilla", sans-serif;
+}
+.search-bar{
+    width:40% ;
+}
+.nav-items{
+    width: 35%;
+}
+.menu{
+    display: flex;
+    justify-content: end;
+}
+.menu>li{
+    list-style: none;
+
+}
+
+
+.menu>li>a,.search-display{
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 20px;
+    color:black;
+    transition: 0.5s;
+    padding:3px;
+}
+.menu>li>a:hover{
+    font-size: 22px;
+    text-shadow: 1px 2px 3px red;
+    mso-border-shadow: yes;
+   border-bottom: 3px solid red;
+    border-top:3px solid red;
+}
+
+
+.input-bt{
+    font-size: 18px;
+    padding:7px;
+    margin-bottom: 6px;
+    border:none;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+.search-display:hover{
+    font-size: 22px;
+    text-shadow: 1px 2px 3px red;
+    mso-border-shadow: yes;
+    border-bottom: 3px solid red;
+    border-top:3px solid red;
+
+}
+
+
+.search-k{
+    height: 87%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border:none;
+
+}
+.main-menu{
+    width: 90%;
+    height: 70px;
+    margin:20px auto;
+    padding: 0 10px;
+}
+.topics{
+    display: flex;
+    justify-content: space-between;
+}
+.topic{
+    list-style: none;
+}
+.topic>a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    transition: 0.3s;
+    padding-bottom: 7px;
+}
+.topic>a:active{
+    color:red;
+
+}
+.topic>a:hover{
+    text-shadow: 0px 5px 5px #cc4444;
+    border-bottom: 3px solid red;
+
+}
+
+/*main page end */
+
+.box-forlastnews{
+    width: 90%;
+    height: 60px;
+    background-color: #d3d1d1;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+}
+.line{
+    width: 80%;
+}
+.line>h3{
+    font-family:"Arial Rounded MT Bold";
+    text-align: center;
+    animation: scroll 4s linear 3;
+    position: relative;
+    font-size: 22px;
+
+
+}
+@keyframes scroll {
+    0% {
+        left: 0;
+    }
+    25% {
+        left: 25%;
+    }
+    50% {
+        left: 0%;
+    }
+    75% {
+        left: -25%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+/*  teg last new end  */
+.card-box{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    justify-content: space-between;
+
+}
+.card{
+    margin-top:10px;
+    width: 46%;
+    height: 200px;
+    box-shadow: 2px 2px 4px black;
+    transition: 0.4s;
+}
+.card:hover{
+    box-shadow: 3px 4px 5px red;
+}
+.title {
+    padding:0 10px;
+    height: auto;
+    padding:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+.title>h3{
+    font-family: "Arial";
+}
+.content{
+    padding:0 20px;
+    height: 80px;
+    max-width: 100%;
+    word-break: break-all;
+}
+.content>p{
+    font-size: 20px;
+}
+
+.footer-card{
+    align-items: center;
+    height: 40px;
+    margin-top:10px;
+    justify-content: space-between;
+    padding: 15px 15px;
+    display: flex;
+}
+
+
+
+.time,.author{
+    color: #9999;
+}
+/* detail html */
+.container{
+    margin:20px auto;
+
+    width: 80%;
+    height: 100%;
+    padding:20px 30px;
+}
+.title-nw{
+    font-size: 22px;
+    font-family: Arial;
+}
+.title-nw>h4{
+    font-size: 22px;
+    /*text-align: center;*/
+    text-transform: uppercase;
+}
+.news-body>p{
+    margin-top: 10px;
+    text-transform: capitalize;
+    line-height: 1.8;
+    letter-spacing: 2px;
+    font-size: 18px;
+}
+
+
+.author-dt{
+
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    color:#999;
+
+}
+.line-cm{
+    width: 100%;
+    height: 2px;
+    background-color: #9999;
+    margin: 2px auto;
+
+}
+.comments{
+    height: auto;
+    width: 78%;
+    margin: 0 auto;
+
+
+}
+.card-comment{
+        border-bottom: 2px solid rgba(196, 193, 193, 0.38);
+
+}
+.name{
+    margin-left: 5px;
+}
+.name>h5{
+    text-transform: capitalize;
+}
+.profile{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin: 10px 15px
+}
+.body{
+
+    padding: 0 20px;
+}
+.time{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* add news form */
+
+.form-addnews{
+    height: 400px;
+    width: 450px;
+    box-shadow: 2px 4px 4px black;
+    margin:50px auto;
+    padding: 20px;
+
+
+}
+.news-form{
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.news-form>h3{
+    text-align: center;
+    font-family: cursive;
+    font-size: 24px;
+}
+.news-form>input{
+    border-radius: 20px;
+    font-size: 20px;
+    padding:4px 8px;
+}
+.news-form>button{
+    padding:8px;
+    font-size: 20px;
+    border-radius: 20px;
+    color:white;
+    background-color: #e34b4b;
+    border:none;
+}
+.news-form>button:hover{
+    background-color: red;
+}
+.news-form>textarea{
+    border-radius: 20px;
+    margin-top: 20px;
+    padding:10px
+}
+.news-form>select{
+    font-size: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding:4px;
+}
+/* form ended */
+
+/* form for comment  */
+.add-comment{
+    margin: 20px auto;
+    width: 100%;
+    padding: 0 22px;
+
+    height: 60px;
+
+
+}
+.form-comment{
+    display: flex;
+    justify-content: space-between;
+}
+.form-comment>textarea{
+    padding:10px;
+    width: 100%;
+    height: 40px;
+}
+
+
+.bt-comment{
+    background-color: #cc4444;
+    color:white;
+    border:none;
+    transition: 0.3s;
+    width: 18%;
+}
+.bt-comment:hover{
+    background-color: red;
+}
+
+
+
+/* sgin up form */
+.signup-form{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100%;
+}
+.signup-form>input{
+    font-size: 14px;
+    padding:10px;
+    border-radius: 20px;
+
+}
+.signup-form>button{
+    font-size: 20px;
+    border-radius: 20px;
+    padding:5px;
+    background-color: #ee5050;
+    color:white;
+    margin-bottom: 10px;
+    border:none;
+}
+.signup-form>button:hover{
+    background-color: red;
+}
+.form-addnews>h2{
+    text-align: center;
+    font-family: cursive;
+    font-size: 30px;
+
+}
+
+
+.view>p{
+    margin-top: 10px;
+}
