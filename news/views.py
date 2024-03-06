@@ -1,30 +1,36 @@
 from datetime import  timedelta
 from django.utils import timezone
-
+from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import Http404
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.decorators.http import require_POST
 from .forms import EmailPostForm, CommentForm, NewsForm
 from news.models import News
 from django.contrib import messages
-
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import News
+from .forms import CommentForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
 def news_list(request):
     news = News.objects.all()
+    trend_10 = News.objects.filter(created_at__gte=datetime.now().date() - timedelta(days=10)).order_by('-view')
     paginator = Paginator(news, 3)
     page_number = request.GET.get('page',1)
-    posts = paginator.get_page(page_number)
-    return render(request, 'news/home.html', {'news':news})
+    posts_pagination = paginator.get_page(page_number)
+    end_date_month = datetime.now().date()
+    start_date_month = end_date_month - timedelta(days=30)
+    trend_month = News.objects.filter(created_at__gte=start_date_month, comments__created_at__lte=end_date_month).order_by('-view')
+    return render(request, 'news/home.html', {
+        'news':news,
+        'trend_10':trend_10,
+        'trend_month':trend_month,
+        'posts_pagination':posts_pagination
+    })
 
-# def news_view(request, news_id):
-#     news = News.objects.get(id=news_id)
-#     news.increment_views()
-#     return render(request, 'news/home.html', {'news':news})
+
 def news_detail(request, id):
     news = get_object_or_404(News, id=id, status=News.Status.PUBLISHED)
     viewed_news = set(request.session.get('viewed_news', []))
@@ -52,10 +58,7 @@ def post_share(request, post_id):
     return render(request, 'news/share.html', {'post':post, 'form':form, })
 
 
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import News
-from .forms import CommentForm
-from django.contrib.auth.decorators import login_required
+
 @login_required
 def post_comment(request, post_id):
     post = get_object_or_404(News, id=post_id, status=News.Status.PUBLISHED)
@@ -113,12 +116,4 @@ def search_product(request):
     return render(request, 'base.html', {'results': results, 'query': query})
 
 
-def get_recent_news():
-    seven_days_ago = timezone.now() - timedelta(days=7)
-    recent_news = News.objects.filter(publish__gte=seven_days_ago, status=News.Status.PUBLISHED)
 
-    return recent_news
-
-def recent_news_view(request):
-    recent_news = get_recent_news()
-    return render(request, 'news/home.html', {'recent_news': recent_news})
