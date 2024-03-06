@@ -38,8 +38,9 @@
             </div>
 {% endif %}
 
-            </div>
-            <div class="line-cm"></div>
+</div>
+        <i class="fa-duotone fa-comments"></i> <b> COMMENTS:</b>
+        <div class="line-cm"></div>
         {% else %}
             <h3><a style="text-decoration: none" href="{% url 'sign-up' %}">Before write a comment, you need to register</a></h3>
         {% endif %}
@@ -49,14 +50,14 @@
                 <div class="profile">
                     <div class="avatar"></div>
                     <div class="name">
-                        <h5>{{ comment.author.username }}</h5>
+                        <h5 style="font-family: Arial">{{ comment.author.username }}</h5>
                     </div>
                 </div>
                 <div class="body">
                     <p>{{ comment.content }}</p>
                 </div>
                 <div class="time">
-                    {{ comment.created_at }}
+                    {{ comment.created_at|date:"F j, H:i" }}
                 </div>
             </div>
         {% endfor %}
