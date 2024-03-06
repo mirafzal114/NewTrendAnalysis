@@ -10,11 +10,13 @@
         <div class="news-body">
             <p>{{ news_detail.body }}</p>
         </div>
-        {{ news_detail.view }}
+
         <div class="author-dt">
-            <p>Author: {{ news_detail.author }}</p>
-            <p>{{ news_detail.created_at }}</p>
+            <p><i class="fa-duotone fa-eye"></i> {{ news_detail.view }}</p>
+            <p><i class="fa-sharp fa-regular fa-calendar-days"></i> {{ news_detail.created_at|date:"F j, H:i" }}</p>
+
         </div>
+        <p style="color: #9999; text-transform: capitalize; margin-top: 20px;"><i class="fa-sharp fa-solid fa-at"></i>{{ news_detail.author }}</p>
     </div>
 
     <div class="comments">

@@ -22,15 +22,12 @@
                 <p>{{ i.body|truncatechars:150 }}</p>
             </div>
             <div class="footer-card">
-{#                <div style="margin-top: 10px;" class="comment">#}
-{#                    <a style="margin-top: 30px; " href="{% url 'post_comment' post_id=i.id %}"><i class="far fa-comments"></i></a>#}
-{#                </div>#}
                 <div class="view">
                    <p><i class="fa-duotone fa-eye"></i> {{ i.view }}</p>
                 </div>
 
                 <div class="time">
-                  <p style="margin-bottom: 20px;"> {{ i.created_at }}</p>
+                  <p style="margin-bottom: 20px;"><i class="fa-sharp fa-regular fa-calendar-days"></i> {{ i.created_at|date:"F j, H:i" }}</p>
                 </div>
             </div>
         </div>

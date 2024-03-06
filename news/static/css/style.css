@@ -182,13 +182,14 @@ span{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 70px;
 }
 .title>h3{
     font-family: "Arial";
 }
 .content{
     padding:0 20px;
-    height: 60px;
+    height: 80px;
     max-width: 100%;
     word-break: break-all;
 }
@@ -197,6 +198,8 @@ span{
 }
 
 .footer-card{
+    align-items: center;
+    height: 40px;
     margin-top:10px;
     justify-content: space-between;
     padding: 15px 15px;
@@ -229,14 +232,12 @@ span{
     margin-top: 10px;
     text-transform: capitalize;
     line-height: 1.7;
-    text-indent: 50px;
     letter-spacing: 2px;
     font-size: 18px;
 }
 .author-dt{
 
     margin-top: 20px;
-    padding: 5px 20px;
 
     display: flex;
     justify-content: space-between;
@@ -340,7 +341,9 @@ span{
 /* form for comment  */
 .add-comment{
     margin: 20px auto;
-    width: 80%;
+    width: 100%;
+    padding: 0 22px;
+
     height: 60px;
 
 
@@ -398,4 +401,10 @@ span{
     text-align: center;
     font-family: cursive;
     font-size: 30px;
+
+}
+
+
+.view>p{
+    margin-top: 10px;
 }
