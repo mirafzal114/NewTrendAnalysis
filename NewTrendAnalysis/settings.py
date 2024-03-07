@@ -23,7 +23,7 @@ TEMPLATES_DIRS = BASE_DIR / 'templates'
 SECRET_KEY = 'django-insecure-3vd&3e_a9_jvdwksa6c@^f9qu$qfrx=01!c1_fnka-k024ti$&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*', '127.0.0.1', '.vercel.app']
 
@@ -84,7 +84,10 @@ DATABASES = {
     'USER': 'default',
     'PASSWORD': 'FMoqE3iRZH4A',
     'HOST': 'ep-flat-salad-a4oopa1r-pooler.us-east-1.aws.neon.tech',
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
   }
+
 }
 
 
