@@ -31,8 +31,7 @@ def news_detail(request, id):
     news = get_object_or_404(News, id=id, status=News.Status.PUBLISHED)
     viewed_news = set(request.session.get('viewed_news', []))
     if id not in viewed_news:
-        # Если новость еще не просматривалась, увеличиваем счетчик просмотров и добавляем ID в множество
-        news.increase_view()  # Это метод, который вы должны добавить в вашу модель News
+        news.increase_view()
         viewed_news.add(id)
         request.session['viewed_news'] = list(viewed_news)
 
@@ -67,7 +66,7 @@ def post_comment(request, post_id):
             comment.post = post
             comment.author = request.user
             comment.save()
-            return redirect('news_detail', id=post_id)  # Use 'id' instead of 'post_id'
+            return redirect('news_detail', id=post_id)
 
     else:
         form = CommentForm()
