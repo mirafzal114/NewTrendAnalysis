@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+
 {% block title %}
     HOME
 {% endblock title %}
+
 {% block body %}
     <div class="container">
         <div class="title-nw">
@@ -14,35 +16,35 @@
         <div class="author-dt">
             <p><i class="fa-duotone fa-eye"></i> {{ news_detail.view }}</p>
             <p><i class="fa-sharp fa-regular fa-calendar-days"></i> {{ news_detail.created_at|date:"F j, H:i" }}</p>
-
         </div>
-        <p style="color: #9999; text-transform: capitalize; margin-top: 20px;"><i class="fa-sharp fa-solid fa-at"></i>{{ news_detail.author }}</p>
+        <p style="color: #9999; text-transform: capitalize; margin-top: 20px;">
+            <i class="fa-sharp fa-solid fa-at"></i> {{ news_detail.author }}
+        </p>
     </div>
 
     <div class="comments">
         {% if user.is_authenticated %}
             <div class="add-comment">
-            <form class="form-comment" action="{% url 'post_comment' post_id=news_detail.id %}" method="POST">
-                {% csrf_token %}
-                <textarea placeholder="write your comment.." name="content" cols="40" rows="10" required="" id="id_content"></textarea>
-                <button class="bt-comment" type="submit">ADD</button>
-            </form>
-        {% if form_comment.errors %}
-            <div class="alert alert-danger">
-                <strong>Error!</strong> Please correct the following errors.
-                <ul>
-                    {% for error in form_comment.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
+                <form class="form-comment" action="{% url 'post_comment' post_id=news_detail.id %}" method="POST">
+                    {% csrf_token %}
+                    <textarea placeholder="Write your comment..." name="content" cols="40" rows="10" required="" id="id_content"></textarea>
+                    <button class="bt-comment" type="submit">ADD</button>
+                </form>
+                {% if form_comment.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> Please correct the following errors.
+                        <ul>
+                            {% for error in form_comment.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
-{% endif %}
-
-</div>
-        <i class="fa-duotone fa-comments"></i> <b> COMMENTS:</b>
-        <div class="line-cm"></div>
+            <i class="fa-duotone fa-comments"></i> <b> COMMENTS:</b>
+            <div class="line-cm"></div>
         {% else %}
-            <h3><a style="text-decoration: none" href="{% url 'sign-up' %}">Before write a comment, you need to register</a></h3>
+            <h3><a style="text-decoration: none" href="{% url 'sign-up' %}">Before writing a comment, you need to register</a></h3>
         {% endif %}
 
         {% for comment in news_detail.comments.all %}
